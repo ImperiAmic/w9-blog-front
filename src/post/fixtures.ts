@@ -132,4 +132,5 @@ export const costillitasLekuePostFormData: PostFormData = {
     "Close-up of pork ribs with green pepper and spring garlic in the Lekué pot",
   tags: ["lekue", "microwave"],
   title: "Pork ribs with green pepper and spring garlic",
+  publishDate: new Date("2025-04-05T12:45:00Z"),
 };

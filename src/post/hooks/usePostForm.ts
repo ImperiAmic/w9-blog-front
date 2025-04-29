@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { UsePostForm } from "./types";
 import { PostFormData } from "../types";
+import { useNavigate } from "react-router";
+import usePostsProvider from "./usePostsProvider";
 
 const usePostForm = (): UsePostForm => {
+  const navigate = useNavigate();
+  const { createPost } = usePostsProvider();
+
   const initialPostFormData = {
     author: "",
     content: "",
@@ -10,6 +15,7 @@ const usePostForm = (): UsePostForm => {
     imageUrl: "",
     tags: [],
     title: "",
+    publishDate: new Date(),
   };
 
   const [postFormData, setPostFormData] =
@@ -57,12 +63,16 @@ const usePostForm = (): UsePostForm => {
     event: React.KeyboardEvent<HTMLInputElement>,
   ): void => {
     if (event.key === "Enter") {
+      event.preventDefault();
       addTag();
     }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+
+    createPost(postFormData);
+    navigate("/posts");
   };
 
   const deleteTag = (thisTag: string): void => {

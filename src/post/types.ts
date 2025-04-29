@@ -14,4 +14,4 @@ export interface Post {
   content: string;
 }
 
-export type PostFormData = Omit<Post, "id" | "publishDate">;
+export type PostFormData = Omit<Post, "id">;
