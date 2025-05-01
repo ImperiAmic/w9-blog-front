@@ -54,3 +54,33 @@ export const costillitasLekuePostDto: PostDto = {
     "Close-up of pork ribs with green pepper and spring garlic in the Lekué pot",
   tags: ["lekue", "microwave"],
 };
+
+export const salmonLekuePostDto: PostDto = {
+  _id: "456def",
+  publishDate: "2025-04-28T08:30:00Z",
+  title: "Microwave salmon with lemon and dill",
+  author: "Newtown Guy",
+  content:
+    "Grab a salmon fillet, some lemon slices, and a sprinkle of dried dill. Throw it all in the Lekué steamer, slam the lid, and microwave for 4 minutes. That's it. Moist, fragrant, and stupidly easy.",
+  imageUrl: "http://www.lekue.cat/salmon.png",
+  imageAlt: "Steamed salmon with lemon slices and dill inside the Lekué pot",
+  tags: ["lekue", "microwave", "salmon"],
+};
+
+export const veggieLekuePostDto: PostDto = {
+  _id: "789ghi",
+  publishDate: "2025-04-29T18:45:00Z",
+  title: "Lekué veggies with a splash of soy",
+  author: "Newtown Guy",
+  content:
+    "Chop up a zucchini, half a red onion, a few mushrooms, and chuck it all in the Lekué with a splash of soy sauce. Full blast in the microwave for 6 minutes. Boom — healthy and not boring.",
+  imageUrl: "http://www.lekue.cat/veggies.png",
+  imageAlt: "Mixed vegetables with soy sauce in the Lekué steam case",
+  tags: ["lekue", "microwave", "vegan"],
+};
+
+export const lekueRecipiesPostsDto = [
+  costillitasLekuePostDto,
+  salmonLekuePostDto,
+  veggieLekuePostDto,
+];

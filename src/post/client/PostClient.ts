@@ -29,9 +29,9 @@ class PostClient implements PostClientStructure {
       body: JSON.stringify(postFormData),
     });
 
-    const newPost = (await response.json()) as PostDto;
+    const newPost = (await response.json()) as { post: PostDto };
 
-    return mapPostDtoToPost(newPost);
+    return mapPostDtoToPost(newPost.post);
   };
 }
 
