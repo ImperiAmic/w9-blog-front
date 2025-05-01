@@ -3,17 +3,21 @@ import usePosts from "../../hooks/usePosts";
 import PostsList from "../../components/PostsList/PostsList";
 import "./PostsPage.css";
 import Paginator from "../../../components/Paginator/Paginator";
-import { useParams } from "react-router";
+import { useSearchParams } from "react-router";
 
 const PostsPage: React.FC = () => {
   const { posts, postsTotal, loadPostsInfo } = usePosts();
-  const { currentPage } = useParams();
+  const [pageNumber] = useSearchParams();
 
-  const pageNumber = Number(currentPage ?? 1);
+  const page = pageNumber.get("pageNumber")
+    ? Number(pageNumber.get("pageNumber"))
+    : 1;
 
   useEffect(() => {
-    loadPostsInfo(pageNumber);
-  }, [loadPostsInfo, pageNumber]);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    loadPostsInfo(page);
+  }, [loadPostsInfo, page]);
 
   return (
     <>
@@ -22,7 +26,7 @@ const PostsPage: React.FC = () => {
         {posts.length} out of {postsTotal} recipies
       </span>
       <PostsList posts={posts} />
-      <Paginator pageNumber={pageNumber} postsTotal={postsTotal} />
+      <Paginator pageNumber={page} postsTotal={postsTotal} />
     </>
   );
 };
