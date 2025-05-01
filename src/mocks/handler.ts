@@ -1,8 +1,10 @@
 import { http, HttpResponse } from "msw";
 import {
   costillitasLekuePostDto,
+  lekueRecipiesPostsDto,
   microwaveRecipiesPostsDto,
 } from "../post/dto/fixturesDto";
+import { PostDto } from "../post/dto/types";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -11,14 +13,26 @@ if (!apiUrl) {
 }
 
 export const handlers = [
-  http.get(`${apiUrl}/posts`, () => {
-    return HttpResponse.json({
+  http.get(`${apiUrl}/posts`, ({ request }) => {
+    const url = new URL(request.url);
+    const currentPage = url.searchParams.get("pageNumber");
+
+    if (currentPage === "2") {
+      return HttpResponse.json<{ posts: PostDto[]; postsTotal: number }>({
+        posts: lekueRecipiesPostsDto,
+        postsTotal: lekueRecipiesPostsDto.length,
+      });
+    }
+
+    return HttpResponse.json<{ posts: PostDto[]; postsTotal: number }>({
       posts: microwaveRecipiesPostsDto,
       postsTotal: microwaveRecipiesPostsDto.length,
     });
   }),
 
   http.post(`${apiUrl}/posts`, () => {
-    return HttpResponse.json(costillitasLekuePostDto);
+    return HttpResponse.json<{ post: PostDto }>({
+      post: costillitasLekuePostDto,
+    });
   }),
 ];
