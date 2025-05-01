@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import "./Paginator.css";
-import Button from "../Button/Button";
 
 interface PaginatorProps {
   pageNumber: number;
@@ -8,45 +7,32 @@ interface PaginatorProps {
 }
 
 const Paginator: React.FC<PaginatorProps> = ({ pageNumber, postsTotal }) => {
-  const navigate = useNavigate();
-
   const pagesTotal = Math.ceil(postsTotal / 5);
   const previousPage = pageNumber - 1;
   const nextPage = pageNumber + 1;
-  const isFirstPage = pageNumber === 1;
-  const isLastPage = pageNumber === pagesTotal;
 
-  const goToPage = (pageNumber: number): void => {
-    navigate(`/posts/${pageNumber}`);
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const isFirstPage = pageNumber > 1 ? "" : "paginator--hidden";
+  const isLastPage = pageNumber < pagesTotal ? "" : "paginator--hidden";
 
   return (
     <div className="paginator">
-      {!isFirstPage && (
-        <Button
-          modifier="paginator"
-          action={() => goToPage(previousPage)}
-          children="<"
-          aria-label="Previous page"
-        />
-      )}
-      <ul className="page-indicators-list">
-        {!isFirstPage && <span className="page-indicator">{previousPage}</span>}
-        <span className="page-indicator page-indicator--current">
-          {pageNumber}
-        </span>
-        {!isLastPage && <span className="page-indicator">{nextPage}</span>}
-      </ul>
-      {!isLastPage && (
-        <Button
-          modifier="paginator"
-          action={() => goToPage(nextPage)}
-          children=">"
-          aria-label="Next page"
-        />
-      )}
+      <Link
+        className={isFirstPage}
+        to={`/posts?pageNumber=${previousPage}`}
+        aria-label="Previous page"
+      >
+        {"<"}
+      </Link>
+
+      <span className="page-indicator">{pageNumber}</span>
+
+      <Link
+        className={isLastPage}
+        to={`/posts?pageNumber=${nextPage}`}
+        aria-label="Next page"
+      >
+        {">"}
+      </Link>
     </div>
   );
 };
