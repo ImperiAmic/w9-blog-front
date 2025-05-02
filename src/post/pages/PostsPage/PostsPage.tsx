@@ -7,17 +7,17 @@ import { useSearchParams } from "react-router";
 
 const PostsPage: React.FC = () => {
   const { posts, postsTotal, loadPostsInfo } = usePosts();
-  const [pageNumber] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
-  const page = pageNumber.get("pageNumber")
-    ? Number(pageNumber.get("pageNumber"))
+  const pageNumber = searchParams.get("pageNumber")
+    ? Number(searchParams.get("pageNumber"))
     : 1;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    loadPostsInfo(page);
-  }, [loadPostsInfo, page]);
+    loadPostsInfo(pageNumber);
+  }, [loadPostsInfo, pageNumber]);
 
   return (
     <>
@@ -26,7 +26,7 @@ const PostsPage: React.FC = () => {
         {posts.length} out of {postsTotal} recipies
       </span>
       <PostsList posts={posts} />
-      <Paginator pageNumber={page} postsTotal={postsTotal} />
+      <Paginator pageNumber={pageNumber} postsTotal={postsTotal} />
     </>
   );
 };
