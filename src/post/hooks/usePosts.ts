@@ -29,7 +29,16 @@ const usePosts = (): PostsContextStructure => {
     }));
   };
 
-  return { ...postsInfo, loadPostsInfo, createPost };
+  const removePost = async (postId: string): Promise<void> => {
+    const removedPost = await postClient.deletePost(postId);
+
+    setPostsInfo((postsInfo) => ({
+      posts: postsInfo.posts.filter((post) => post.id !== removedPost.id),
+      postsTotal: postsInfo.postsTotal,
+    }));
+  };
+
+  return { ...postsInfo, loadPostsInfo, createPost, removePost };
 };
 
 export default usePosts;
