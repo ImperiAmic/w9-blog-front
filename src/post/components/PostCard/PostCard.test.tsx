@@ -41,12 +41,22 @@ describe("Given the PostCard component", () => {
       expect(contentText).toBe(expectedText);
     });
 
-    test("Then it should have been posted on April 16, 2025", () => {
+    test("Then it should show that have been posted on April 16, 2025", () => {
       render(<PostCard post={macAndCheese} />);
 
       const postPublishDate = screen.getByText(/april 3, 2025/i);
 
       expect(postPublishDate).toBeInTheDocument();
+    });
+
+    test("Then it should show a '❌' button", () => {
+      render(<PostCard post={macAndCheese} />);
+      screen.debug();
+      const postDeleteButton = screen.getByRole("img", {
+        name: "Delete post",
+      });
+
+      expect(postDeleteButton).toBeInTheDocument();
     });
   });
 });

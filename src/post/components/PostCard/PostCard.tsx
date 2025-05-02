@@ -1,3 +1,4 @@
+import Button from "../../../components/Button/Button";
 import { Post } from "../../types";
 import "./PostCard.css";
 
@@ -33,6 +34,15 @@ const PostCard: React.FC<PostCardProps> = ({
             </li>
           ))}
         </ul>
+        <Button
+          type="button"
+          action={() => {}}
+          modifier={"delete"}
+          ariaLabel={"Delete post"}
+          ariaRole="img"
+        >
+          ❌
+        </Button>
       </div>
     </article>
   );
