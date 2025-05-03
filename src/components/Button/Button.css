@@ -47,8 +47,23 @@
   right: 20px;
   bottom: 20px;
   background-color: var(--blue-main);
+  transition: all 0.3s;
 
   &:hover {
     background-color: var(--black-main);
+  }
+}
+
+.button--info {
+  padding: 3px;
+  position: absolute;
+  font-size: 1.25rem;
+  top: 20px;
+  right: 20px;
+  background-color: var(--blue-main);
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--orange-main);
   }
 }

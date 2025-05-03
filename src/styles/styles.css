@@ -4,6 +4,7 @@
   --black-main: #242526;
   --blue-main: #8ce8ff;
   --green-main: #baff8c;
+  --orange-main: #ffaf8c;
   --default-font: "Roboto Variable", Arial, Helvetica, sans-serif;
   --custom-font: Cookie, var(--default-font);
 }

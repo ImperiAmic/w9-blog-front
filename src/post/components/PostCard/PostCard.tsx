@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import Button from "../../../components/Button/Button";
 import usePostsProvider from "../../hooks/usePostsProvider";
 import { Post } from "../../types";
@@ -11,6 +12,7 @@ const PostCard: React.FC<PostCardProps> = ({
   post: { id, title, publishDate, author, imageUrl, imageAlt, content, tags },
 }) => {
   const { removePost } = usePostsProvider();
+  const navigate = useNavigate();
 
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
@@ -23,6 +25,15 @@ const PostCard: React.FC<PostCardProps> = ({
 
   return (
     <article className="post">
+      <Button
+        type="button"
+        action={() => navigate(`/post/${id}`)}
+        modifier={"info"}
+        ariaLabel={"Go to post detail"}
+        ariaRole="img"
+      >
+        ℹ️
+      </Button>
       <img className="post__image" src={imageUrl} alt={imageAlt} />
       <div>
         <h3 className="post__title">{title}</h3>
