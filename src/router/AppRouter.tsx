@@ -3,7 +3,7 @@ import App from "../components/App/App";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PostsPage from "../post/pages/PostsPage/PostsPage";
 import PostFormPage from "../post/pages/PostFormPage/PostFormPage";
-import PostDetailPage from "../post/pages/PostDetail/PostDetailPage";
+import PostDetailPage from "../post/pages/PostDetailPage/PostDetailPage";
 
 const AppRouter: React.FC = () => {
   return (

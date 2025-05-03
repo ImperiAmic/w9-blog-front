@@ -44,12 +44,7 @@ const PostDetailPage: React.FC = () => {
           src={post.imageUrl}
           alt={post.imageAlt}
         />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde vel,
-          expedita illum inventore alias soluta, quod adipiesci laborum
-          voluptates sit nobis accusamus. Neque qui vel, commodi temporibus et
-          minus corrupti?
-        </p>
+        <p>{post.content}</p>
         <ul className="post-detail__tags">
           {post.tags.map((tag) => (
             <li key={tag}>

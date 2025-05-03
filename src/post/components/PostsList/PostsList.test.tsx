@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { chickenAndRice, fluffyPancakes, macAndCheese } from "../../fixtures";
 import PostsList from "./PostsList";
 import PostsContextProvider from "../../context/PostsContextProvider";
+import { MemoryRouter } from "react-router";
 
 describe("Given the PostsList component", () => {
   describe("When it renders with 'Chicken and Rice', 'Fluffy Pancakes' and `Mac and Cheese` recipies", () => {
@@ -13,7 +14,9 @@ describe("Given the PostsList component", () => {
 
       render(
         <PostsContextProvider>
-          <PostsList posts={posts} />
+          <MemoryRouter>
+            <PostsList posts={posts} />
+          </MemoryRouter>
         </PostsContextProvider>,
       );
 

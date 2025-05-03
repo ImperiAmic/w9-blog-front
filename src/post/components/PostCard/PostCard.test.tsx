@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import PostCard from "./PostCard";
 import { macAndCheese } from "../../fixtures";
 import PostsContextProvider from "../../context/PostsContextProvider";
+import { MemoryRouter } from "react-router";
 
 describe("Given the PostCard component", () => {
   describe("When it receives a mac and cheese post", () => {
@@ -10,7 +11,9 @@ describe("Given the PostCard component", () => {
 
       render(
         <PostsContextProvider>
-          <PostCard post={macAndCheese} />
+          <MemoryRouter>
+            <PostCard post={macAndCheese} />
+          </MemoryRouter>
         </PostsContextProvider>,
       );
 
@@ -26,7 +29,9 @@ describe("Given the PostCard component", () => {
 
       render(
         <PostsContextProvider>
-          <PostCard post={macAndCheese} />
+          <MemoryRouter>
+            <PostCard post={macAndCheese} />
+          </MemoryRouter>{" "}
         </PostsContextProvider>,
       );
 
@@ -44,7 +49,9 @@ describe("Given the PostCard component", () => {
 
       render(
         <PostsContextProvider>
-          <PostCard post={macAndCheese} />
+          <MemoryRouter>
+            <PostCard post={macAndCheese} />
+          </MemoryRouter>{" "}
         </PostsContextProvider>,
       );
 
@@ -57,7 +64,9 @@ describe("Given the PostCard component", () => {
     test("Then it should show that have been posted on April 16, 2025", () => {
       render(
         <PostsContextProvider>
-          <PostCard post={macAndCheese} />
+          <MemoryRouter>
+            <PostCard post={macAndCheese} />
+          </MemoryRouter>{" "}
         </PostsContextProvider>,
       );
 
@@ -69,7 +78,9 @@ describe("Given the PostCard component", () => {
     test("Then it should show a '❌' button", () => {
       render(
         <PostsContextProvider>
-          <PostCard post={macAndCheese} />
+          <MemoryRouter>
+            <PostCard post={macAndCheese} />
+          </MemoryRouter>{" "}
         </PostsContextProvider>,
       );
       screen.debug();
