@@ -72,7 +72,7 @@ const usePostForm = (): UsePostForm => {
     event.preventDefault();
 
     createPost(postFormData);
-    navigate("/posts");
+    navigate("/posts?pageNumber=1");
   };
 
   const deleteTag = (thisTag: string): void => {

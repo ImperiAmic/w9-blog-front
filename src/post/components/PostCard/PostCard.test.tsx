@@ -1,13 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import PostCard from "./PostCard";
 import { macAndCheese } from "../../fixtures";
+import PostsContextProvider from "../../context/PostsContextProvider";
 
 describe("Given the PostCard component", () => {
   describe("When it receives a mac and cheese post", () => {
     test("Then it should show 'Mac and Cheese' inside a heading", () => {
       const expectedTitle = /mac and cheese/i;
 
-      render(<PostCard post={macAndCheese} />);
+      render(
+        <PostsContextProvider>
+          <PostCard post={macAndCheese} />
+        </PostsContextProvider>,
+      );
 
       const postTitle = screen.getByRole("heading", {
         name: expectedTitle,
@@ -19,7 +24,11 @@ describe("Given the PostCard component", () => {
     test("Then it should show creamy mac and cheese in a bowl", () => {
       const expectedImage = /creamy mac and cheese in a bowl/i;
 
-      render(<PostCard post={macAndCheese} />);
+      render(
+        <PostsContextProvider>
+          <PostCard post={macAndCheese} />
+        </PostsContextProvider>,
+      );
 
       const postImage = screen.getByAltText(expectedImage);
 
@@ -33,7 +42,11 @@ describe("Given the PostCard component", () => {
         .slice(0, wordsLimit)
         .join(" ");
 
-      render(<PostCard post={macAndCheese} />);
+      render(
+        <PostsContextProvider>
+          <PostCard post={macAndCheese} />
+        </PostsContextProvider>,
+      );
 
       const postContent = screen.getByRole("paragraph");
       const contentText = postContent.textContent;
@@ -41,12 +54,30 @@ describe("Given the PostCard component", () => {
       expect(contentText).toBe(expectedText);
     });
 
-    test("Then it should have been posted on April 16, 2025", () => {
-      render(<PostCard post={macAndCheese} />);
+    test("Then it should show that have been posted on April 16, 2025", () => {
+      render(
+        <PostsContextProvider>
+          <PostCard post={macAndCheese} />
+        </PostsContextProvider>,
+      );
 
       const postPublishDate = screen.getByText(/april 3, 2025/i);
 
       expect(postPublishDate).toBeInTheDocument();
+    });
+
+    test("Then it should show a '❌' button", () => {
+      render(
+        <PostsContextProvider>
+          <PostCard post={macAndCheese} />
+        </PostsContextProvider>,
+      );
+      screen.debug();
+      const postDeleteButton = screen.getByRole("img", {
+        name: "Delete post",
+      });
+
+      expect(postDeleteButton).toBeInTheDocument();
     });
   });
 });

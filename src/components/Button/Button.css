@@ -39,3 +39,16 @@
     background: none;
   }
 }
+
+.button--delete {
+  padding: 3px;
+  position: absolute;
+  font-size: 1.25rem;
+  right: 20px;
+  bottom: 20px;
+  background-color: var(--blue-main);
+
+  &:hover {
+    background-color: var(--black-main);
+  }
+}
