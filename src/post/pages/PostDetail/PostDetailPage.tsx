@@ -1,10 +1,10 @@
 import { useParams } from "react-router";
 import usePostsProvider from "../../hooks/usePostsProvider";
-import "./PostDetail.css";
 import { useEffect, useState } from "react";
 import { Post } from "../../types";
+import "./PostDetailPage.css";
 
-const PostDetail: React.FC = () => {
+const PostDetailPage: React.FC = () => {
   const { loadPost } = usePostsProvider();
 
   const { postId } = useParams<{ postId: string }>();
@@ -62,4 +62,4 @@ const PostDetail: React.FC = () => {
   );
 };
 
-export default PostDetail;
+export default PostDetailPage;

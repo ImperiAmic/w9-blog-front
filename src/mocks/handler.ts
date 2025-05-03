@@ -3,6 +3,7 @@ import {
   costillitasLekuePostDto,
   lekueRecipiesPostsDto,
   microwaveRecipiesPostsDto,
+  veggieLekuePostDto,
 } from "../post/dto/fixturesDto";
 import { PostDto } from "../post/dto/types";
 
@@ -33,6 +34,12 @@ export const handlers = [
   http.post(`${apiUrl}/posts`, () => {
     return HttpResponse.json<{ post: PostDto }>({
       post: costillitasLekuePostDto,
+    });
+  }),
+
+  http.get(`${apiUrl}/posts/12345678901234567890abcd`, () => {
+    return HttpResponse.json<{ post: PostDto }>({
+      post: veggieLekuePostDto,
     });
   }),
 ];
