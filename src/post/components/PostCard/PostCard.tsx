@@ -1,5 +1,5 @@
 import Button from "../../../components/Button/Button";
-import usePosts from "../../hooks/usePosts";
+import usePostsProvider from "../../hooks/usePostsProvider";
 import { Post } from "../../types";
 import "./PostCard.css";
 
@@ -10,7 +10,7 @@ interface PostCardProps {
 const PostCard: React.FC<PostCardProps> = ({
   post: { id, title, publishDate, author, imageUrl, imageAlt, content, tags },
 }) => {
-  const { removePost } = usePosts();
+  const { removePost } = usePostsProvider();
 
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
