@@ -24,8 +24,8 @@ const usePosts = (): PostsContextStructure => {
     const newPost = await postClient.addPost(postFormData);
 
     setPostsInfo(({ posts, postsTotal }) => ({
-      posts: [...posts, newPost],
-      postsTotal,
+      posts: [newPost, ...posts],
+      postsTotal: postsTotal + 1,
     }));
   };
 
@@ -34,7 +34,7 @@ const usePosts = (): PostsContextStructure => {
 
     setPostsInfo((postsInfo) => ({
       posts: postsInfo.posts.filter((post) => post.id !== removedPost.id),
-      postsTotal: postsInfo.postsTotal,
+      postsTotal: postsInfo.postsTotal - 1,
     }));
   };
 
