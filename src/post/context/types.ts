@@ -6,4 +6,5 @@ export interface PostsContextStructure {
   loadPostsInfo: (pageNumber?: number) => Promise<void>;
   createPost: (postFormData: PostFormData) => Promise<void>;
   removePost: (postId: string) => Promise<void>;
+  loadPost: (postId: string) => Promise<Post>;
 }

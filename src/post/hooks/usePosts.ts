@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { PostsContextStructure } from "../context/types";
-import { PostFormData, PostsInfo } from "../types";
+import { Post, PostFormData, PostsInfo } from "../types";
 import PostClient from "../client/PostClient";
 
 const usePosts = (): PostsContextStructure => {
@@ -38,7 +38,13 @@ const usePosts = (): PostsContextStructure => {
     }));
   };
 
-  return { ...postsInfo, loadPostsInfo, createPost, removePost };
+  const loadPost = async (postId: string): Promise<Post> => {
+    const loadedPost = await postClient.getPost(postId);
+
+    return loadedPost;
+  };
+
+  return { ...postsInfo, loadPostsInfo, createPost, removePost, loadPost };
 };
 
 export default usePosts;

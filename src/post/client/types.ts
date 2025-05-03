@@ -4,4 +4,5 @@ export interface PostClientStructure {
   getPostsInfo: () => Promise<PostsInfo>;
   addPost: (postFormData: PostFormData) => Promise<Post>;
   deletePost: (postId: string) => Promise<Post>;
+  getPost: (postId: string) => Promise<Post>;
 }
